@@ -5,7 +5,7 @@ import { StackNavigator  } from 'react-navigation';
 import Home from './../pages/home';
 import Login from './../pages/Login';
 
-const RootStack = StackNavigator(
+export default RootStack = StackNavigator(
   {
     Login: Login,
     Home: Home
@@ -15,7 +15,3 @@ const RootStack = StackNavigator(
     initialRouteName: 'Login'
   }
 )
-
-export {
-  RootStack
-}

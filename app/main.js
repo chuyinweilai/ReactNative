@@ -13,26 +13,22 @@ import {
   Text
 } from 'react-native'
 import SplashScreen from 'react-native-splash-screen';
-import {RootStack} from './routers/routers';
-
+import RootStack from './routers/routers';
+import Index from './pages';
 import { createStackNavigator } from 'react-navigation';
 let store = createStore(todoApp)
 
 export default class Main extends Component{
   
-  componentWillMount(){
-    console.log(RootStack)
+  componentDidMount(){
     SplashScreen.hide();
   }
 
   render() {
-    // return (
-    //   <Provider store={store}>
-    //     <RootStack />
-    //   </Provider>
-    // );
     return (
-      <RootStack />
+      <Provider store={store}>
+        <Index />
+      </Provider>
     );
   }
 }
