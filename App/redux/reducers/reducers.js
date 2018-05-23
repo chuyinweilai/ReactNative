@@ -1,19 +1,23 @@
 import {
   LOGIN_MESS,
-  USER_RANGE
+  USER_RANGE,
+  PAGE_SELECT
 } from './../actions/actions';
 
-const initState = [{
+const initState = {
   "login_mess": {},
   "lvl": 0,
-}]
+  "page": 'Login',
+}
 
 export default todoAdd = (state = initState, action) => {
   switch(action.type){
     case LOGIN_MESS:
-      return [...state, Object.assign(...state,{"login_mess": action.login_mess})]
+      return Object.assign(state,{"login_mess": action.login_mess})
     case USER_RANGE:
-      return [...state, Object.assign(...state,{"lvl": action.login_mess})]
+      return Object.assign(state,{"lvl": action.lvl})
+    case PAGE_SELECT:
+      return Object.assign(state,{"page": action.page})
     default: return state
   }
 }

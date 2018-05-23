@@ -1,14 +1,24 @@
 
 import React from 'react';
-import { 
+import PropTypes from 'prop-types';
+import {
   View,
   Text,
   Button,
   StyleSheet
 } from 'react-native';
+import { connect } from 'react-redux';
 import RootStack from './../routers/routers';
-import { ToolTabs, ToolHead, px2dp, g_style } from './../components';
-export default class Index extends React.Component{
+import { ToolHead, px2dp, g_style } from './../components';
+
+class Index extends React.Component{
+  constructor(props){
+    super(props);
+  }
+
+  componentWillMount(){
+  }
+
   render(){
     return(
       <View style={styles.container}>
@@ -16,7 +26,7 @@ export default class Index extends React.Component{
         <View style={styles.contant}>
           <RootStack />
         </View>
-        <ToolTabs/>
+        {/* <ToolTabs/> */}
       </View>
     )
   }
@@ -32,3 +42,18 @@ const styles = StyleSheet.create({
     backgroundColor: '#eee'
   },
 })
+
+Index.propTypes = {
+  "login_mess": PropTypes.object.isRequired,
+  "lvl": PropTypes.number.isRequired,
+  "page": PropTypes.string.isRequired
+}
+
+
+const select = state =>({
+  "login_mess": state.login_mess,
+  "lvl": state.lvl,
+  "page": state.page,
+})
+
+export default connect(select)(Index)

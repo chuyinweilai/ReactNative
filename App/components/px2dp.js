@@ -4,7 +4,7 @@ const deviceWidthDp = Dimensions.get('window').width;
 // 参考图为 1080*1920
 const uiWidthPx = 1080;
  
-function pxToDp(uiElementPx) {
+function px2dp(uiElementPx) {
   return uiElementPx *  deviceWidthDp / uiWidthPx;
 }
-export default pxToDp;
+export default px2dp;
