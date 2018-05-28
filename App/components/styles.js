@@ -5,5 +5,5 @@ import {
 export default g_style = {
   mainColor: '#fb7299',
   white: "aliceblue",
-  black: '#696969',
+  black: '#757575',
 }

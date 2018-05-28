@@ -6,11 +6,11 @@ import {
   Button
 } from 'react-native';
 
-export default class Recommend extends React.Component{
+export default class LiveVideo extends React.Component{
   render(){
     return(
       <View>
-        <Text>推荐</Text>
+        <Text>追番</Text>
       </View>
     )
   }

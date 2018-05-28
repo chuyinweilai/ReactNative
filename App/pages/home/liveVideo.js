@@ -7,10 +7,11 @@ import {
 } from 'react-native';
 
 export default class LiveVideo extends React.Component{
+
   render(){
     return(
       <View>
-        <Text>LiveVideo</Text>
+        <Text>直播</Text>
       </View>
     )
   }

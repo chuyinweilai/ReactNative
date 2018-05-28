@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import PropTypes from 'prop-types';
 import {
   View,
   Text,
@@ -7,19 +8,32 @@ import {
   TextInput,
   StyleSheet
 } from 'react-native';
+import { connect } from 'react-redux';
+import { slider_ctrl } from './../redux/actions/actions'
 import px2dp from './px2dp';
 import g_style from './styles';
-export default class ToolHead extends Component{
+class ToolHead extends Component{
+  constructor(props){
+    super(props);
+  }
 
   _tabsClick(e){
-    console.log(e)
+    // console.log(e)
+  }
+
+
+  _slider_ctrl(){
+    const { slider_status, slider_todo } = this.props;
+    slider_todo(!slider_status);
   }
 
   _home(){
     return (
       <View style={styles.container}>
-        <View style={styles.UserHead} data-key="home" onPress={this._tabsClick.bind(this)}>
-          <Text style={[{fontFamily:'iconfont'}, styles.text, styles.sliderIcon]}>&#xe626;</Text>
+        <View style={styles.UserHead} data-key="home">
+          <TouchableOpacity onPress={this._slider_ctrl.bind(this)}>
+            <Text style={[{fontFamily:'iconfont'}, styles.text, styles.sliderIcon]}>&#xe626;</Text>
+          </TouchableOpacity>
           <Image style={styles.headImg} source={require('./../assets/img/head-Icon.jpg')}/>
         </View>
         <View style={styles.searchBox} data-key="home" onPress={this._tabsClick.bind(this)}>
@@ -117,3 +131,23 @@ const styles = StyleSheet.create({
     color: "pink"
   },
 })
+
+ToolHead.propTypes = {
+  "slider_status": PropTypes.bool.isRequired
+}
+
+const select = arr =>{
+  let state = arr[arr.length-1];
+  return {
+    "slider_status": state.slider_status
+  }
+}
+
+const Todo = (dispatch, ownProps) => {
+  return {
+    slider_todo: bol => dispatch(slider_ctrl(bol))
+  }
+}
+
+
+export default connect(select, Todo)(ToolHead)

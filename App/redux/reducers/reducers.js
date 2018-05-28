@@ -1,23 +1,27 @@
 import {
   LOGIN_MESS,
   USER_RANGE,
-  PAGE_SELECT
+  PAGE_SELECT,
+  SLIDER_CTRL
 } from './../actions/actions';
 
-const initState = {
+const initState = [{
   "login_mess": {},
   "lvl": 0,
   "page": 'Login',
-}
+  "slider_status": false,
+}]
 
-export default todoAdd = (state = initState, action) => {
+export default function todoApp (state = initState, action) {
   switch(action.type){
     case LOGIN_MESS:
-      return Object.assign(state,{"login_mess": action.login_mess})
+      return [...state, Object.assign(...state, {"login_mess":action.login_mess})]
     case USER_RANGE:
-      return Object.assign(state,{"lvl": action.lvl})
+      return [...state, Object.assign(...state, {"lvl":action.lvl})]
     case PAGE_SELECT:
-      return Object.assign(state,{"page": action.page})
+      return [...state, Object.assign(...state, {"page":action.page})]
+    case SLIDER_CTRL:
+      return [...state, Object.assign(...state, {"slider_status":action.slider_status})]
     default: return state
   }
 }
