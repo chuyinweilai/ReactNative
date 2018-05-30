@@ -17,8 +17,11 @@ class ToolHead extends Component{
     super(props);
   }
 
-  _tabsClick(e){
-    // console.log(e)
+  _tabsClick(type, e){
+    if(type==="search"){
+      console.log(this.props.navigation.navigate('Searchs'))
+      
+    }
   }
 
 
@@ -36,16 +39,9 @@ class ToolHead extends Component{
           </TouchableOpacity>
           <Image style={styles.headImg} source={require('./../assets/img/head-Icon.jpg')}/>
         </View>
-        <View style={styles.searchBox} data-key="home" onPress={this._tabsClick.bind(this)}>
+        <TouchableOpacity activeOpacity={1} style={styles.searchBox} data-key="home" onPress={this._tabsClick.bind(this, "search")}>
           <Text style={[{fontFamily:'iconfont'}, styles.searchIcon]}>&#xe614;</Text>
-          <TextInput
-            style={styles.search}
-            maxLength={10}
-            autoCorrect={false}
-            multiline = {false}
-            underlineColorAndroid="transparent"
-          />
-        </View>
+        </TouchableOpacity>
         <TouchableOpacity style={styles.headbtn} data-key="home" onPress={this._tabsClick.bind(this)}>
           <Text style={[{fontFamily:'iconfont'}, styles.icon]}>&#xe69d;</Text>
         </TouchableOpacity>
@@ -99,7 +95,6 @@ const styles = StyleSheet.create({
     width: px2dp(450),
     height: px2dp(90),
     flexDirection: 'row',
-    justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#e5688c',
     borderRadius: px2dp(45),

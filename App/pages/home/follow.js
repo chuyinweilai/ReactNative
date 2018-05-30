@@ -7,6 +7,11 @@ import {
 } from 'react-native';
 
 export default class LiveVideo extends React.Component{
+
+  componentWillMount(){
+    console.log(this.props)
+  }
+
   render(){
     return(
       <View>

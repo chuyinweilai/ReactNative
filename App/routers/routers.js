@@ -2,7 +2,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator  } from 'react-navigation';
-import { px2dp, g_style } from './../components'
+import { px2dp, g_style, ToolHead } from './../components'
 import {
   Login,
   Home,
@@ -75,7 +75,7 @@ const Contant = createBottomTabNavigator(
     },
   },
   {
-    headerMode: 'none',
+    headerMode: <ToolHead></ToolHead>,
     initRouteName: 'Home',
     lazyLoad: true,
     tabBarOptions: {
@@ -95,6 +95,6 @@ export default RootStack = createStackNavigator(
   },
   {
     headerMode: 'none',
-    initialRouteName : 'Contant'
+    initialRouteName : 'Login'
   }
 )

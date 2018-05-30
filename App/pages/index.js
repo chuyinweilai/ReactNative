@@ -5,6 +5,7 @@ import {
   View,
   Text,
   Button,
+  StatusBar,
   StyleSheet,
   TouchableOpacity,
   DrawerLayoutAndroid
@@ -12,7 +13,7 @@ import {
 import { connect } from 'react-redux';
 import { slider_ctrl, login_mess } from './../redux/actions/actions';
 import RootStack from './../routers/routers';
-import { ToolHead, Slider, px2dp, g_style } from './../components';
+import { Slider, px2dp, g_style, ToolHead } from './../components';
 
 class Index extends Component{
   constructor(props){
@@ -25,15 +26,7 @@ class Index extends Component{
     if(DrawerLayoutAndroid){
       slider_status? DrawerLayoutAndroid.openDrawer(): DrawerLayoutAndroid.closeDrawer();
     }
-
   }
-
-  // _drawer(type){
-  //   let DrawerLayoutAndroid = this.refs.DrawerLayoutAndroid ;
-  //   if(DrawerLayoutAndroid){
-  //     type? DrawerLayoutAndroid.openDrawer(): DrawerLayoutAndroid.closeDrawer();
-  //   }
-  // }
 
   render(){
     const { slider_status, slider_todo } = this.props;
@@ -45,8 +38,8 @@ class Index extends Component{
         onDrawerOpen ={() => slider_todo(true)}
         drawerPosition={DrawerLayoutAndroid.positions.Left}
         renderNavigationView={() => <Slider/>}>
+          <StatusBar translucent={true} backgroundColor={"rgba(0,0,0,0)"}/>
           <View style={styles.container}>
-            <ToolHead></ToolHead>
             <View style={styles.contant}>
               <RootStack />
             </View>

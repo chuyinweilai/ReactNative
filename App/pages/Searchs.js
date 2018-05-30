@@ -5,10 +5,8 @@ import {
   Text,
   Button
 } from 'react-native';
-import { createTabNavigator  } from 'react-navigation';
-import { ToolHead, px2dp, g_style} from './../components';
 
-export default class Purchase extends React.Component{
+export default class Searchs extends React.Component{
 
   _goback(){
     this.props.navigation.goBack()
@@ -17,7 +15,7 @@ export default class Purchase extends React.Component{
   render(){
     return(
       <View>
-        <ToolHead></ToolHead>
+        <Text>Searchs</Text>
         <Button title="go back" onPress={()=>this._goback()}/>
       </View>
     )
